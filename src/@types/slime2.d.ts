@@ -112,6 +112,7 @@ namespace Slime2 {
       id: string
       date: Date
       text: string
+      channelId: string | null
     }
 
     namespace Message {

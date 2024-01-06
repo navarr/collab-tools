@@ -40,6 +40,7 @@ export default function useMessage() {
       text,
       parts: transformText(text, twurpleMessage.emoteOffsets, type === 'cheer'),
       user: await transformUser(twurpleMessage.userInfo),
+      channelId: twurpleMessage.channelId,
       tags: twurpleMessage.tags,
       ...typeData,
     }
