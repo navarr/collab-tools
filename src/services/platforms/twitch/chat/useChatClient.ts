@@ -41,18 +41,6 @@ export default function useChatClient() {
       chatClient.join(channelId)
     }
 
-    function watchBroadcasterChannel() {
-      chatClient.join(broadcaster!.userName)
-    }
-
-    function stopWatchingChannel(channelId: string) {
-      chatClient.part(channelId)
-    }
-
-    function stopWatchingBroadcasterChannel() {
-      chatClient.part(broadcaster!.userName)
-    }
-
     // -------------------------
     //  Chat Dispatch Functions
     // -------------------------
@@ -113,7 +101,7 @@ export default function useChatClient() {
         const { bits } = msg
         const typeData: Twitch.Event.Message.Type = bits
           ? { type: 'cheer', cheer: { amount: bits } }
-          : { type: 'basic' }
+          : { type: 'basic', channelId: msg.channelId }
 
         const message = await transformMessage(typeData, msg, text)
         addMessage(message)

@@ -24,13 +24,14 @@ namespace Twitch {
       user: Message.User
       first: boolean
       parts: Message.Part[]
-      tags: Map<string, string>
+      tags: Map<string, string>,
+      channelId: string | null
     } & Message.Type &
       Slime2.Event.BasicMessage
 
     namespace Message {
       type Type =
-        | { type: 'basic' }
+        | { type: 'basic', channelId: string | null }
         | { type: 'action' }
         | { type: 'highlight' }
         | { type: 'cheer'; cheer: Cheer }

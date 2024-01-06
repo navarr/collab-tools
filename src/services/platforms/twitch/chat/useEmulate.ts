@@ -88,7 +88,7 @@ export default function useEmulateTwitchMessage() {
       user.color = await transformUserColor(user.userName)
     }
 
-    let messageType: Twitch.Event.Message.Type = { type: 'basic' }
+    let messageType: Twitch.Event.Message.Type = { type: 'basic', channelId: null }
 
     if (Random.boolean()) {
       // 50% chance of being a special type
@@ -229,6 +229,7 @@ export default function useEmulateTwitchMessage() {
       text,
       parts,
       tags: new Map<string, string>([['test', '1']]),
+      channelId: 'zaytri'
     }
 
     addEvent({
@@ -238,6 +239,7 @@ export default function useEmulateTwitchMessage() {
       message,
       source: 'twitch',
       emulated: true,
+      channelId: 'zaytri'
     })
   }
 
