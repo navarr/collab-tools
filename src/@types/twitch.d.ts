@@ -7,10 +7,10 @@ namespace Twitch {
 
   namespace Event {
     type Type =
-      | { type: 'message'; message: Message }
-      | { type: 'remove-user'; userId: string }
+      | { type: 'message'; message: Message, channelId: string }
+      | { type: 'remove-user'; userId: string, channelId: string }
       | { type: 'remove-message'; messageId: string }
-      | { type: 'clear-messages' }
+      | { type: 'clear-messages', channelId: string }
 
     type RemoveMessage = {
       messageId: string

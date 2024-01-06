@@ -25,6 +25,12 @@ export default function useChatClient() {
     const chatClient = chatClientRef.current
     if (!chatClient.isConnected && !chatClient.isConnecting) {
       chatClient.connect()
+      watchChannel('nyavarr');
+      watchChannel('elitheinanna');
+      watchChannel('CalluCrow');
+      watchChannel('asterfae');
+      watchChannel('hiinafuraido');
+      watchChannel('lilyak_thefuffy');
     }
 
     // -------------------------
@@ -32,7 +38,7 @@ export default function useChatClient() {
     // -------------------------
 
     function watchChannel(channelId: string) {
-      chatClient.join(userName)
+      chatClient.join(channelId)
     }
 
     function watchBroadcasterChannel() {
@@ -40,11 +46,11 @@ export default function useChatClient() {
     }
 
     function stopWatchingChannel(channelId: string) {
-      chatClient.part(userName)
+      chatClient.part(channelId)
     }
 
     function stopWatchingBroadcasterChannel() {
-      chatClient.part(broadcaster!.username)
+      chatClient.part(broadcaster!.userName)
     }
 
     // -------------------------
